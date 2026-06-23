@@ -675,8 +675,10 @@ function LoginScreen({ onLogin }) {
   return (
     <main className="login-shell">
       <section className="login-panel">
-        <h1>Sign in to HireByte AI</h1>
-        <p>Continue with your Google account.</p>
+        <span className="brand-mark">H</span>
+        <p className="eyebrow">HIREBYTE AI</p>
+        <h1>Login</h1>
+        <p>Continue with your Google account to open your interview workspace.</p>
         {GOOGLE_CLIENT_ID && <div ref={googleButtonRef} className="google-button" />}
         {googleError && <p className="auth-error">{googleError}</p>}
         {!googleReady && (
@@ -688,7 +690,7 @@ function LoginScreen({ onLogin }) {
             Continue in Private Local Mode
           </button>
         )}
-        <p className="login-note">Your interview history, answer feedback, ATS checks, and progress stay separated by account on this device.</p>
+        <p className="login-note">Your history, ATS checks, and analytics stay separated by account on this device.</p>
       </section>
     </main>
   );

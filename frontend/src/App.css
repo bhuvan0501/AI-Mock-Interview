@@ -41,53 +41,57 @@ button {
 .login-shell {
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: clamp(72px, 10vh, 104px) 24px 48px;
+  display: grid;
+  place-items: center;
+  padding: 32px 24px;
   background:
-    radial-gradient(circle at 20% 15%, rgba(99, 102, 241, 0.07), transparent 28%),
-    radial-gradient(circle at 82% 12%, rgba(14, 165, 233, 0.08), transparent 26%),
-    #f5f7fb;
-  color: #071225;
+    radial-gradient(circle at 50% 28%, rgba(37, 99, 235, 0.18), transparent 22rem),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.92)),
+    #111827;
+  color: #111827;
 }
 
 .login-panel {
-  width: 100%;
-  max-width: none;
+  width: min(430px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  padding: 38px 34px 34px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 8px;
+  background: rgba(241, 245, 249, 0.86);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
   text-align: center;
 }
 
+.login-panel .brand-mark {
+  margin-bottom: 16px;
+}
+
 .login-panel .eyebrow {
-  color: #36e4c6;
+  margin: 0;
+  color: #2563eb;
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
 }
 
 .login-panel h1 {
-  margin: 0;
+  margin: 12px 0 0;
   color: #071225;
-  font-size: 2.5rem;
-  line-height: 1.15;
+  font-size: 2rem;
+  line-height: 1.1;
   font-weight: 800;
   letter-spacing: 0;
 }
 
 .login-panel > p:not(.eyebrow) {
-  max-width: 540px;
-  margin: 12px 0 0;
+  max-width: 330px;
+  margin: 10px 0 0;
   color: #344563;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
 .login-panel small {
@@ -101,7 +105,7 @@ button {
   min-height: 44px;
   width: 300px;
   max-width: 100%;
-  margin-top: 28px;
+  margin-top: 26px;
   display: flex;
   justify-content: center;
 }
@@ -120,16 +124,17 @@ button {
 
 .login-panel .primary-btn.full {
   width: auto;
-  min-width: 260px;
-  margin-top: 24px;
+  min-width: 300px;
+  max-width: 100%;
+  margin-top: 18px;
   padding: 13px 22px;
 }
 
 .login-note {
-  max-width: 460px !important;
-  margin-top: 32px !important;
+  max-width: 330px !important;
+  margin-top: 22px !important;
   color: #52627a !important;
-  font-size: 0.95rem !important;
+  font-size: 0.88rem !important;
 }
 
 .topbar {
@@ -929,14 +934,16 @@ button {
 .is-live-interview .interview-room {
   height: 100%;
   display: grid;
-  grid-template-rows: minmax(230px, 43vh) minmax(0, 1fr);
+  grid-template-rows: minmax(220px, 38vh) minmax(0, 1fr);
   gap: 12px;
   overflow: hidden;
 }
 
 .is-live-interview .camera-panel {
+  width: min(1380px, 100%);
   min-height: 0;
   height: 100%;
+  justify-self: center;
   border-radius: 8px;
   border-color: rgba(203, 213, 225, 0.9);
   background:
@@ -990,8 +997,8 @@ button {
   position: absolute;
   top: 16px;
   right: 16px;
-  width: min(23vw, 280px);
-  min-width: 190px;
+  width: min(22vw, 240px);
+  min-width: 176px;
   min-height: 0;
   aspect-ratio: 16 / 11;
   display: block;
@@ -1026,16 +1033,18 @@ button {
 .is-live-interview .avatar-panel strong {
   bottom: 34px;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .is-live-interview .avatar-panel small {
   bottom: 10px;
   color: #cfe3f7;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .interview-controls {
+  width: min(1380px, 100%);
+  justify-self: center;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: 12px;
@@ -1045,7 +1054,7 @@ button {
 
 .is-live-interview .question-panel {
   min-height: 0;
-  padding: 12px 16px;
+  padding: 16px 18px;
   border-radius: 8px;
   border-color: rgba(229, 231, 235, 0.65);
   background: rgba(255, 255, 255, 0.86);
@@ -1053,27 +1062,27 @@ button {
 }
 
 .is-live-interview .question-panel span {
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  letter-spacing: 0.22em;
 }
 
 .is-live-interview .question-panel h2 {
   display: -webkit-box;
   max-width: none;
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   overflow: hidden;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: clamp(18px, 1.8vw, 26px);
+  font-size: clamp(20px, 2.1vw, 32px);
   line-height: 1.18;
 }
 
 .is-live-interview .answer-panel {
   min-height: 0;
   display: grid;
-  grid-template-rows: 38px minmax(54px, 1fr) 48px;
-  gap: 10px;
-  padding: 12px 16px;
+  grid-template-rows: 48px minmax(76px, 1fr) 56px;
+  gap: 12px;
+  padding: 14px 18px;
   overflow: hidden;
   border-color: rgba(229, 231, 235, 0.65);
   background: rgba(255, 255, 255, 0.86);
@@ -1081,22 +1090,22 @@ button {
 
 .is-live-interview .wave-strip {
   grid-template-columns: auto minmax(128px, auto) 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
 .is-live-interview .wave-strip strong {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .is-live-interview .wave {
-  height: 38px;
+  height: 44px;
 }
 
 .is-live-interview .answer-panel textarea {
   min-height: 0;
   height: 100%;
   resize: none;
-  padding: 12px;
+  padding: 14px;
   border-color: rgba(203, 213, 225, 0.9);
   color: #111827;
   background: rgba(255, 255, 255, 0.94);
@@ -1107,13 +1116,13 @@ button {
   align-items: center;
   gap: 10px;
   margin-top: 0;
-  min-height: 48px;
+  min-height: 56px;
   overflow: visible;
 }
 
 .is-live-interview .answer-actions button {
-  min-height: 44px;
-  padding: 0 18px;
+  min-height: 50px;
+  padding: 0 22px;
   white-space: nowrap;
 }
 
@@ -1336,6 +1345,10 @@ button {
 
 .interview-room > .camera-panel {
   width: 100%;
+}
+
+.is-live-interview .interview-room > .camera-panel {
+  width: min(1380px, 100%);
 }
 
 .wave-strip {
