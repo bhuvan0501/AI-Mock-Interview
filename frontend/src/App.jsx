@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import interviewerPortrait from './assets/ai-interviewer.png';
 
-const API_BASE = 'http://127.0.0.1:8000';
+// Connected to your live cloud production backend engine on Render
+const API_BASE = 'https://ai-mock-interview-2m62.onrender.com';
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const initialSessionUser = (() => {
   const stored = sessionStorage.getItem('hirebyte_user');
@@ -34,7 +35,7 @@ const fallbackProfile = {
 
 function getFriendlyError(error) {
   if (error instanceof TypeError && error.message === 'Failed to fetch') {
-    return 'Backend is offline. Start FastAPI with: cd backend; ..\\venv\\Scripts\\python.exe -m uvicorn main:app --reload --host 127.0.0.1 --port 8000';
+    return 'Backend cloud service is waking up or offline. Please give it a few moments and try again.';
   }
   return error.message || 'Something went wrong. Please try again.';
 }
@@ -95,7 +96,7 @@ function App() {
   const [savedInterviews, setSavedInterviews] = useState(() => {
     if (!initialSessionUser) return [];
     const stored = localStorage.getItem(`hirebyte_interviews_${initialSessionUser.id}`);
-    return stored ? JSON.parse(stored) : [];
+    return stored ? JSON.parse(stored) : [] ;
   });
   const [atsFile, setAtsFile] = useState(null);
   const [atsJd, setAtsJd] = useState('');
@@ -131,10 +132,11 @@ function App() {
     recognition.onresult = (event) => {
       const finalParts = [];
       const interimParts = [];
+ 
       for (let index = event.resultIndex; index < event.results.length; index += 1) {
         const result = event.results[index];
         const alternatives = Array.from(result);
-        const best = alternatives.find((item) => /bhuvan|bhuvan/i.test(item.transcript))
+        const best = alternatives.find((item) => /bhuvan/i.test(item.transcript))
           || alternatives.sort((a, b) => b.confidence - a.confidence)[0]
           || result[0];
         const transcript = best.transcript.trim();
@@ -323,7 +325,7 @@ function App() {
     setCameraError('');
     if (!navigator.mediaDevices?.getUserMedia) {
       setCameraEnabled(false);
-      setCameraError('Camera access is not supported in this browser. Use Chrome or Edge on http://127.0.0.1:5175.');
+      setCameraError('Camera access is not supported in this browser. Use Chrome or Edge.');
       return;
     }
     try {
@@ -333,7 +335,7 @@ function App() {
       if (!hasCamera) {
         setCameraStream(null);
         setCameraEnabled(false);
-        setCameraError('No webcam was detected on this device. You can continue the interview with voice/text, or connect/enable a camera and retry.');
+        setCameraError('No webcam was detected on this device. You can continue the interview with voice/text.');
         return;
       }
       let stream;
@@ -371,7 +373,6 @@ function App() {
 
     stopListening();
     const submittedAnswer = candidateResponse.trim();
-
     const answerCount = history.filter((turn) => turn.role === 'user').length + 1;
     const maxQuestions = durationMode === 'quick' ? 4 : durationMode === 'standard' ? 8 : 12;
 
@@ -653,7 +654,7 @@ function LoginScreen({ onLogin }) {
         setGoogleError('');
         return true;
       } catch (error) {
-        setGoogleError(`${error.message || 'Google sign-in failed.'} Make sure http://127.0.0.1:5175 is added as an authorized JavaScript origin.`);
+        setGoogleError(`${error.message || 'Google sign-in failed.'} Make sure your domain is added as an authorized JavaScript origin.`);
         return false;
       }
     };
