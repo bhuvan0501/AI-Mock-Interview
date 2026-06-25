@@ -698,9 +698,37 @@ function LoginScreen({ onLogin }) {
 }
 
 function Header({ activePage, setActivePage, user, onSignOut, compact = false }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function choosePage(page) {
+    setActivePage(page);
+    setIsMenuOpen(false);
+  }
+
   return (
-    <header className={compact ? 'topbar compact' : 'topbar'}>
-      <button className="brand" onClick={() => setActivePage('Dashboard')} type="button">
+    <header className={`${compact ? 'topbar compact' : 'topbar'} ${isMenuOpen ? 'menu-open' : ''}`}>
+      <div className="mobile-head">
+        <button className="brand" onClick={() => choosePage('Dashboard')} type="button">
+          <span className="brand-mark">H</span>
+          <span>
+            <strong>HIREBYTE AI</strong>
+            <small>Interview cockpit</small>
+          </span>
+        </button>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      <button className="brand desktop-brand" onClick={() => choosePage('Dashboard')} type="button">
         <span className="brand-mark">H</span>
         <span>
           <strong>HIREBYTE AI</strong>
@@ -714,7 +742,7 @@ function Header({ activePage, setActivePage, user, onSignOut, compact = false })
             key={item}
             type="button"
             className={activePage === item ? 'active' : ''}
-            onClick={() => setActivePage(item)}
+            onClick={() => choosePage(item)}
             title={item}
           >
             <span className="nav-icon">{navIcons[item]}</span>

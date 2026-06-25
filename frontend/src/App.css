@@ -1749,3 +1749,369 @@ button {
     font-size: 36px;
   }
 }
+
+/* Responsive layout repair layer */
+h1,
+.section-heading h1,
+.dashboard-greeting h1,
+.login-panel h1 {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+h2,
+.hero-panel h2,
+.section-heading h2,
+.history-card h2,
+.review-question {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.app-shell,
+.app-shell.is-dashboard {
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+}
+
+.page-wrap,
+.is-dashboard .page-wrap {
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dashboard-grid {
+  height: auto;
+  min-height: 100%;
+  grid-template-rows: none;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.hero-panel {
+  min-height: auto;
+}
+
+.hero-panel::after {
+  width: min(220px, 24vw);
+  height: 120px;
+}
+
+.metric-card,
+.dashboard-tile,
+.setup-form,
+.profile-card,
+.question-panel,
+.answer-panel,
+.history-card,
+.ats-result,
+.empty-state {
+  height: auto;
+  min-height: auto;
+}
+
+.metric-card strong {
+  font-size: 28px;
+}
+
+.dashboard-tile {
+  min-height: 112px;
+}
+
+.dashboard-tile strong,
+.history-card h2,
+.history-card p,
+.metric-card small {
+  overflow-wrap: anywhere;
+}
+
+.question-panel h2,
+.is-live-interview .question-panel h2 {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.mobile-head {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  h1,
+  .section-heading h1,
+  .dashboard-greeting h1,
+  .login-panel h1 {
+    font-size: 20px;
+  }
+
+  h2,
+  .hero-panel h2,
+  .section-heading h2,
+  .history-card h2,
+  .review-question {
+    font-size: 18px;
+  }
+
+  .login-shell {
+    padding: 20px 12px;
+  }
+
+  .login-panel {
+    width: 90%;
+    max-width: 400px;
+    padding: 28px 20px;
+  }
+
+  .google-button,
+  .login-panel .primary-btn.full {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar,
+  .is-dashboard .topbar,
+  .is-live-interview .topbar {
+    position: sticky;
+    inset: auto;
+    top: 0;
+    z-index: 60;
+    width: 100%;
+    min-height: 72px;
+    display: block;
+    padding: 10px 14px;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 34px rgba(31, 41, 55, 0.1);
+  }
+
+  .mobile-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .desktop-brand {
+    display: none;
+  }
+
+  .mobile-head .brand {
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .is-live-interview .mobile-head .brand {
+    justify-content: flex-start;
+  }
+
+  .is-live-interview .mobile-head .brand > span:not(.brand-mark),
+  .is-live-interview .topbar.menu-open .account-panel div,
+  .is-live-interview .topbar.menu-open .account-panel button {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    gap: 4px;
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .menu-toggle span {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: #111827;
+  }
+
+  .topbar .nav-pills,
+  .topbar .account-panel {
+    display: none;
+  }
+
+  .topbar.menu-open .nav-pills,
+  .topbar.menu-open .account-panel {
+    display: grid;
+  }
+
+  .topbar.menu-open .nav-pills {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(100% + 8px);
+    z-index: 70;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 22px 54px rgba(31, 41, 55, 0.16);
+  }
+
+  .topbar.menu-open .account-panel {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(100% + 204px);
+    z-index: 70;
+    grid-template-columns: 38px 1fr;
+    padding: 14px;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 22px 54px rgba(31, 41, 55, 0.16);
+  }
+
+  .nav-icon {
+    display: none;
+  }
+
+  .nav-label {
+    display: inline;
+  }
+
+  .nav-pills button,
+  .is-live-interview .nav-pills button {
+    width: 100%;
+    height: auto;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+
+  .page-wrap,
+  .is-dashboard .page-wrap,
+  .is-live-interview .page-wrap {
+    width: min(100% - 24px, 1320px);
+    min-height: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+    overflow-y: visible;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dashboard-greeting {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-panel,
+  .metric-card,
+  .dashboard-tile,
+  .profile-card,
+  .score-grid .metric-card {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .hero-panel {
+    padding: 22px;
+  }
+
+  .hero-panel::after {
+    display: none;
+  }
+
+  .hero-actions,
+  .answer-actions,
+  .confirm-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-tile {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-tile button {
+    width: 100%;
+  }
+
+  .duration-grid,
+  .profile-grid,
+  .score-grid,
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ats-result,
+  .history-card {
+    grid-template-columns: 1fr;
+  }
+
+  .is-live-interview {
+    height: auto;
+    overflow: visible;
+  }
+
+  .is-live-interview .interview-room {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .is-live-interview .camera-panel {
+    width: 100%;
+    min-height: 360px;
+  }
+
+  .is-live-interview .avatar-panel {
+    width: min(78%, 280px);
+    min-width: 0;
+    top: 12px;
+    right: 12px;
+  }
+
+  .interview-controls {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .is-live-interview .answer-panel {
+    grid-template-rows: auto minmax(120px, auto) auto;
+    overflow: visible;
+  }
+
+  .is-live-interview .wave-strip {
+    grid-template-columns: auto 1fr;
+  }
+
+  .is-live-interview .wave {
+    grid-column: 1 / -1;
+  }
+
+  .is-live-interview .answer-panel textarea {
+    min-height: 150px;
+  }
+}
