@@ -31,6 +31,9 @@ def _load_local_env():
 
 _load_local_env()
 app = FastAPI()
+@app.get("/")
+def home():
+    return {"status": "HireByte Backend is Online"}
 
 app.add_middleware(
     CORSMiddleware,
